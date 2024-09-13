@@ -16,8 +16,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(primarySwatch: Colors.blue),
       home: HomeScreen(),
       routes: {
-        '/listaProdutos': (context) => ListaProdutos(produtos: []), // Não usado diretamente
-        '/adicionarProduto': (context) => FormularioProduto(onAddProduto: (produto) {}), // Não usado diretamente
+        '/listaProdutos': (context) => ListaProdutos(produtos: []), 
+        '/adicionarProduto': (context) => FormularioProduto(onAddProduto: (produto) {}), 
       },
     );
   }
@@ -49,13 +49,6 @@ class _HomeScreenState extends State<HomeScreen> {
               decoration: BoxDecoration(color: Colors.blue),
               child: Text('Menu', style: TextStyle(color: Colors.white, fontSize: 24)),
             ),
-            // ListTile(
-            //   title: Text('Página Principal'),
-            //   onTap: () {
-            //     Navigator.pop(context);
-            //     Navigator.popUntil(context, ModalRoute.withName('/')); // Volta mantendo o estado
-            //   },
-            // ),
             ListTile(
               title: Text('Lista de Produtos'),
               onTap: () {
@@ -78,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     builder: (context) => FormularioProduto(
                       onAddProduto: (produto) {
                         _addProduto(produto);
-                        Navigator.pop(context); // Volta para a HomeScreen
+                        Navigator.pop(context); 
                         Navigator.push(
                           context,
                           MaterialPageRoute(

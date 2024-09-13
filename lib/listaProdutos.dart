@@ -9,11 +9,11 @@ class ListaProdutos extends StatelessWidget {
   Color _getBackgroundColor(String tipo) {
     switch (tipo) {
       case 'Ação':
-        return Colors.blue[50]!; // Cor para Ações
+        return Colors.blue[50]!; 
       case 'FII':
-        return Colors.amber[50]!; // Cor para FIIs
+        return Colors.amber[50]!; 
       default:
-        return Colors.grey[50]!; // Cor para ETFs
+        return Colors.grey[50]!;
     }
   }
 
@@ -36,7 +36,7 @@ class ListaProdutos extends StatelessWidget {
                     color: Colors.grey.withOpacity(0.5),
                     spreadRadius: 2,
                     blurRadius: 5,
-                    offset: Offset(0, 3), // Deslocamento da sombra
+                    offset: Offset(0, 3),
                   ),
                 ],
                 border: Border.all(color: Colors.blueAccent, width: 1),
