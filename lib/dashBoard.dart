@@ -156,7 +156,6 @@ class DashboardScreen extends StatelessWidget {
     );
   }
 
-  // Método para construir as listas de cotações por categoria.
   Widget _buildCotacoesList(List<ProdutoFinanceiro> produtos) {
     return Column(
       children: produtos.map((produto) {
