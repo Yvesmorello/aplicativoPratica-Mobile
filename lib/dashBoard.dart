@@ -101,35 +101,35 @@ class DashboardScreen extends StatelessWidget {
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 10),
-              _buildAltasBaixasList(maioresAltas, true),
+              buildAltasBaixasList(maioresAltas, true),
               SizedBox(height: 20),
               Text(
                 'Baixas do Dia',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 10),
-              _buildAltasBaixasList(maioresBaixas, false),
+              buildAltasBaixasList(maioresBaixas, false),
               SizedBox(height: 20),
               Text(
                 'Cotações de Ações',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 10),
-              _buildCotacoesList(produtos.where((p) => p.tipo == 'Ação').toList()),
+              buildCotacoesList(produtos.where((p) => p.tipo == 'Ação').toList()),
               SizedBox(height: 20),
               Text(
                 'Cotações de FIIs',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 10),
-              _buildCotacoesList(produtos.where((p) => p.tipo == 'FII').toList()),
+              buildCotacoesList(produtos.where((p) => p.tipo == 'FII').toList()),
               SizedBox(height: 20),
               Text(
                 'Cotações de ETFs',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 10),
-              _buildCotacoesList(produtos.where((p) => p.tipo == 'ETF').toList()),
+              buildCotacoesList(produtos.where((p) => p.tipo == 'ETF').toList()),
             ],
           ),
         ),
@@ -137,7 +137,7 @@ class DashboardScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildAltasBaixasList(List<ProdutoFinanceiro> produtos, bool isAlta) {
+  Widget buildAltasBaixasList(List<ProdutoFinanceiro> produtos, bool isAlta) {
     return Column(
       children: produtos.map((produto) {
         return Card(
@@ -156,7 +156,7 @@ class DashboardScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildCotacoesList(List<ProdutoFinanceiro> produtos) {
+  Widget buildCotacoesList(List<ProdutoFinanceiro> produtos) {
     return Column(
       children: produtos.map((produto) {
         return Card(
