@@ -8,17 +8,17 @@ class FormularioProduto extends StatefulWidget {
   FormularioProduto({required this.onAddProduto});
 
   @override
-  _FormularioProdutoState createState() => _FormularioProdutoState();
+  FormularioProdutoState createState() => FormularioProdutoState();
 }
 
-class _FormularioProdutoState extends State<FormularioProduto> {
-  final _formKey = GlobalKey<FormState>();
-  final _nomeController = TextEditingController();
-  final _precoController = TextEditingController();
-  final _variacaoController = TextEditingController();
+class FormularioProdutoState extends State<FormularioProduto> {
+  final formKey = GlobalKey<FormState>();
+  final nomeController = TextEditingController();
+  final precoController = TextEditingController();
+  final variacaoController = TextEditingController();
 
-  CategoriaProduto? _categoriaSelecionada;
-  String _tipoSelecionado = 'Ação';
+  CategoriaProduto? categoriaSelecionada;
+  String tipoSelecionado = 'Ação';
 
   final List<CategoriaProduto> categorias = [
     CategoriaProduto(nome: 'Ação', descricao: 'Ações de empresas'),
@@ -33,11 +33,11 @@ class _FormularioProdutoState extends State<FormularioProduto> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
-          key: _formKey,
+          key: formKey,
           child: Column(
             children: [
               TextFormField(
-                controller: _nomeController,
+                controller: nomeController,
                 decoration: InputDecoration(labelText: 'Nome do Produto'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -47,7 +47,7 @@ class _FormularioProdutoState extends State<FormularioProduto> {
                 },
               ),
               TextFormField(
-                controller: _precoController,
+                controller: precoController,
                 decoration: InputDecoration(labelText: 'Preço Atual'),
                 keyboardType: TextInputType.number,
                 validator: (value) {
@@ -61,7 +61,7 @@ class _FormularioProdutoState extends State<FormularioProduto> {
                 },
               ),
               TextFormField(
-                controller: _variacaoController,
+                controller: variacaoController,
                 decoration: InputDecoration(labelText: 'Variação (%)'),
                 keyboardType: TextInputType.number,
                 validator: (value) {
@@ -75,10 +75,10 @@ class _FormularioProdutoState extends State<FormularioProduto> {
                 },
               ),
               DropdownButtonFormField<CategoriaProduto>(
-                value: _categoriaSelecionada,
+                value: categoriaSelecionada,
                 onChanged: (categoria) {
                   setState(() {
-                    _categoriaSelecionada = categoria;
+                    categoriaSelecionada = categoria;
                   });
                 },
                 items: categorias.map((categoria) {
@@ -92,13 +92,13 @@ class _FormularioProdutoState extends State<FormularioProduto> {
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  if (_formKey.currentState?.validate() ?? false) {
+                  if (formKey.currentState?.validate() ?? false) {
                     final novoProduto = ProdutoFinanceiro(
-                      nome: _nomeController.text,
-                      tipo: _tipoSelecionado,
-                      precoAtual: double.parse(_precoController.text),
-                      variacao: double.parse(_variacaoController.text),
-                      categoria: _categoriaSelecionada!,
+                      nome: nomeController.text,
+                      tipo: tipoSelecionado,
+                      precoAtual: double.parse(precoController.text),
+                      variacao: double.parse(variacaoController.text),
+                      categoria: categoriaSelecionada!,
                     );
                     widget.onAddProduto(novoProduto);
                   }
