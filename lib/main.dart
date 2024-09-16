@@ -25,15 +25,15 @@ class MyApp extends StatelessWidget {
 
 class HomeScreen extends StatefulWidget {
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  HomeScreenState createState() => HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
-  final List<ProdutoFinanceiro> _produtos = [];
+class HomeScreenState extends State<HomeScreen> {
+  final List<ProdutoFinanceiro> produtos = [];
 
-  void _addProduto(ProdutoFinanceiro produto) {
+  void addProduto(ProdutoFinanceiro produto) {
     setState(() {
-      _produtos.add(produto);
+      produtos.add(produto);
     });
   }
 
@@ -56,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ListaProdutos(produtos: _produtos),
+                    builder: (context) => ListaProdutos(produtos: produtos),
                   ),
                 );
               },
@@ -70,12 +70,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   MaterialPageRoute(
                     builder: (context) => FormularioProduto(
                       onAddProduto: (produto) {
-                        _addProduto(produto);
+                        addProduto(produto);
                         Navigator.pop(context); 
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => ListaProdutos(produtos: _produtos),
+                            builder: (context) => ListaProdutos(produtos: produtos),
                           ),
                         );
                       },
